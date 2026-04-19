@@ -1,0 +1,51 @@
+// === FILENAME: src/data/newsData.js ===
+export const newsData = [
+  {
+    id: 1,
+    title: "Gran victoria ante Deportivo Mina Clavero",
+    excerpt: "El equipo se impuso por 3 a 1 en un partido muy emocionante jugado en casa ante la mirada de más de 500 hinchas que alentaron sin parar.",
+    date: "15 Mar 2025",
+    category: "Resultados",
+    body: "En un encuentro que mantuvo en vilo a toda la hinchada, el Club Deportivo Villa del Dique logró una contundente victoria ante Deportivo Mina Clavero por 3 a 1. Los goles llegaron en los minutos 18, 45 y 67, sellando una actuación dominante del equipo local. El director técnico destacó el trabajo en equipo y la presión alta como claves del triunfo. 'Fue un partido muy intenso, pero los chicos supieron mantener la compostura en los momentos decisivos', afirmó tras el partido. Este resultado coloca al equipo en una posición privilegiada en la tabla de la Liga Regional.",
+  },
+  {
+    id: 2,
+    title: "Incorporación de nuevos juveniles a la primera",
+    excerpt: "La dirigencia confirmó el ascenso de tres jugadores de las divisiones inferiores al plantel principal para la segunda mitad de la temporada.",
+    date: "10 Mar 2025",
+    category: "Institución",
+    body: "El Club Deportivo Villa del Dique anunció con orgullo la incorporación de tres jóvenes valores al plantel de la primera división. Se trata de jugadores que llevan años formándose en las divisiones inferiores del club y que han demostrado un nivel excepcional en los entrenamientos y torneos juveniles. Esta decisión refleja el compromiso de la institución con el desarrollo del fútbol local y la formación de talentos propios. 'Estos chicos representan el futuro del club, y estamos convencidos de que van a aportar mucho al equipo', expresó el presidente de la institución.",
+  },
+  {
+    id: 3,
+    title: "Jornada solidaria en el estadio del club",
+    excerpt: "El club organizó una jornada comunitaria con talleres para niños de la región, recaudando fondos y fortaleciendo los lazos con la comunidad.",
+    date: "05 Mar 2025",
+    category: "Comunidad",
+    body: "El estadio del Club Deportivo Villa del Dique se convirtió en un centro de encuentro comunitario durante la jornada solidaria organizada por la institución. Más de 300 niños participaron en talleres de fútbol, arte y educación ambiental. También se realizó una colecta de alimentos no perecederos que fue donada a familias de la región. La actividad contó con la presencia de los jugadores del plantel principal, quienes interactuaron con los más pequeños y firmaron autógrafos. 'El club va más allá de la cancha; somos parte de esta comunidad', señaló el capitán del equipo.",
+  },
+  {
+    id: 4,
+    title: "Pretemporada: los objetivos del cuerpo técnico",
+    excerpt: "El DT presentó los planes para la pretemporada y los ambiciosos objetivos de la temporada que incluyen luchar por el ascenso de categoría.",
+    date: "28 Feb 2025",
+    category: "Institucional",
+    body: "El director técnico del Club Deportivo Villa del Dique brindó una conferencia de prensa en la que detalló los objetivos para la nueva temporada. La pretemporada se desarrollará durante tres semanas con doble turno de entrenamiento, con foco en la preparación física y la implementación de un nuevo sistema táctico. 'Queremos ser protagonistas en la Liga Regional y pelear por el ascenso. Contamos con un plantel muy comprometido y con jugadores de gran calidad', afirmó el DT. El cuerpo técnico también confirmó la incorporación de un preparador físico especializado.",
+  },
+  {
+    id: 5,
+    title: "Nuevo sponsor se suma al club",
+    excerpt: "Una empresa local se convirtió en sponsor oficial del club para toda la temporada, reforzando el apoyo económico a la institución.",
+    date: "20 Feb 2025",
+    category: "Institución",
+    body: "En un acto realizado en la sede del club, se formalizó el acuerdo de sponsoreo entre el Club Deportivo Villa del Dique y una destacada empresa local. El patrocinio incluye la presencia de la marca en las camisetas del equipo, en el estadio y en todas las comunicaciones oficiales del club. 'Este apoyo es fundamental para que podamos seguir creciendo como institución y brindar mejores condiciones a nuestros jugadores', agradeció el presidente. La empresa manifestó su orgullo por asociarse con una institución que representa tan bien a Villa del Dique.",
+  },
+  {
+    id: 6,
+    title: "El club cumple 45 años de historia",
+    excerpt: "Villa del Dique celebra un nuevo aniversario con actividades para toda la familia, recordando décadas de pasión, esfuerzo y comunidad.",
+    date: "12 Feb 2025",
+    category: "Efemérides",
+    body: "El Club Deportivo Villa del Dique cumple 45 años de vida institucional, y la celebración estuvo a la altura de tan significativa fecha. Exjugadores, socios históricos y aficionados de todas las edades se dieron cita en el estadio para compartir memorias y vivir momentos únicos. Se presentó un documental con imágenes históricas del club, y se rindió homenaje a los fundadores y a quienes forjaron la identidad del club a lo largo de las décadas. 'Este club nació del amor a la pelota y a nuestro pueblo, y seguirá vivo gracias a todos ustedes', expresó emocionado el presidente durante el discurso de cierre.",
+  },
+];

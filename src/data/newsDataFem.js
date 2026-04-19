@@ -1,0 +1,51 @@
+// === FILENAME: src/data/newsDataFem.js ===
+export const newsDataFem = [
+  {
+    id: "fem-1",
+    title: "El equipo femenino golea y sigue invicto",
+    excerpt: "Las chicas aplastaron 4 a 0 a Las Flores FC en un partido que dominaron de principio a fin con un fútbol colectivo brillante.",
+    date: "14 Mar 2025",
+    category: "Resultados",
+    body: "El equipo femenino del Club Deportivo Villa del Dique continúa su marcha invicta tras golear 4-0 a Las Flores FC en un partido que fue un auténtico espectáculo. Las goles llegaron por distintas vías: dos de pelota parada, uno de contraataque y un golazo desde fuera del área que encendió las tribunas. La entrenadora destacó la madurez del equipo en el manejo de los tiempos y la efectividad en las jugadas ensayadas. 'Estamos en un gran momento, pero sabemos que esto recién empieza', señaló tras el pitido final.",
+  },
+  {
+    id: "fem-2",
+    title: "Convocatoria de tres jugadoras a la selección provincial",
+    excerpt: "Tres integrantes del plantel femenino fueron convocadas para representar a Córdoba en el torneo nacional juvenil. Orgullo del club.",
+    date: "09 Mar 2025",
+    category: "Institución",
+    body: "El Club Deportivo Villa del Dique tiene motivos para celebrar: tres de sus jugadoras del equipo femenino fueron seleccionadas para integrar la selección de Córdoba que participará en el torneo nacional juvenil. Este reconocimiento es fruto del trabajo sostenido del club en la formación de jugadoras y del esfuerzo diario de las deportistas. 'Somos un club chico, pero con corazón grande. Que nuestras chicas lleguen a la selección provincial es el resultado de años de dedicación', afirmó la comisión directiva.",
+  },
+  {
+    id: "fem-3",
+    title: "Inauguración del vestuario femenino renovado",
+    excerpt: "El club inauguró el vestuario exclusivo para el equipo femenino, una mejora esperada que dignifica las condiciones de entrenamiento.",
+    date: "04 Mar 2025",
+    category: "Infraestructura",
+    body: "Con la presencia de jugadoras, cuerpo técnico, dirigentes y parte de la comunidad, se inauguró el vestuario exclusivo para el equipo femenino del club. La obra fue posible gracias a una combinación de aportes de socios, sponsors y fondos propios de la institución. El espacio cuenta con duchas individuales, casilleros personalizados, sala de relajación y una sala de video. 'Esto no es un lujo, es una necesidad. Nuestras jugadoras se merecen estas condiciones', afirmó la presidenta de la comisión de fútbol femenino.",
+  },
+  {
+    id: "fem-4",
+    title: "Taller de liderazgo femenino en el club",
+    excerpt: "Profesionales de la psicología deportiva y el liderazgo dictaron un taller exclusivo para las jugadoras del plantel femenino.",
+    date: "25 Feb 2025",
+    category: "Formación",
+    body: "El Club Deportivo Villa del Dique apostó a la formación integral de sus jugadoras organizando un taller de liderazgo femenino en el deporte. Psicólogas deportivas y ex deportistas de alto rendimiento compartieron herramientas para el manejo de la presión, el trabajo en equipo y el desarrollo de la confianza. Las jugadoras valoraron positivamente la iniciativa: 'Nos ayudó a entendernos mejor como equipo y a conocer nuestras fortalezas individuales', comentó la capitana del equipo.",
+  },
+  {
+    id: "fem-5",
+    title: "El equipo femenino suma su primer patrocinador propio",
+    excerpt: "Una empresa de la región se convirtió en el primer sponsor exclusivo del equipo femenino, marcando un hito en la historia del club.",
+    date: "18 Feb 2025",
+    category: "Institución",
+    body: "Un hito histórico para el fútbol femenino del club: por primera vez, el equipo cuenta con un sponsor exclusivo. Una empresa de indumentaria deportiva de la región decidió apostar por el proyecto femenino y firmó un contrato de patrocinio que incluye camisetas, equipamiento y presencia en redes sociales. 'Que una empresa crea en nosotras lo suficiente como para invertir exclusivamente en el equipo femenino es un orgullo enorme', expresó la capitana del equipo entre lágrimas de emoción.",
+  },
+  {
+    id: "fem-6",
+    title: "Torneo infantil femenino: el legado del club",
+    excerpt: "Villa del Dique organizó el primer torneo de fútbol infantil femenino de la región, con la participación de 12 equipos de toda la provincia.",
+    date: "10 Feb 2025",
+    category: "Comunidad",
+    body: "En una iniciativa que ya se convirtió en referencia regional, el Club Deportivo Villa del Dique organizó el primer torneo de fútbol infantil femenino de la zona, con la participación de 12 equipos de localidades de toda la provincia de Córdoba. El evento reunió a más de 200 niñas de entre 8 y 14 años que jugaron en las instalaciones del club durante todo el fin de semana. 'Queremos que las nenas de hoy sean las referentes del fútbol femenino del mañana', afirmó la directora del área de fútbol femenino del club.",
+  },
+];
