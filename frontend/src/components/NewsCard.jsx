@@ -36,6 +36,7 @@ const ImageArea = styled.div`
   justify-content: center;
   position: relative;
   transition: filter 0.35s ease;
+  overflow: hidden;
 
   .fem-accent & {
     background: linear-gradient(135deg, #7e22ce, #000);
@@ -44,9 +45,19 @@ const ImageArea = styled.div`
     background: linear-gradient(135deg, #059669, #000);
   }
 
+  img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+  }
+
   svg {
     font-size: 3rem;
     color: rgba(255, 255, 255, 0.15);
+    z-index: 1;
   }
 `;
 
@@ -143,7 +154,7 @@ const cardVariants = {
 
 // ── Component ──────────────────────────────────────────────────────────────────
 
-export default function NewsCard({ id, title, excerpt, date, category, isFem, isBocha }) {
+export default function NewsCard({ id, title, excerpt, date, category, cover, isFem, isBocha }) {
   const navigate = useNavigate();
 
   return (
@@ -180,7 +191,11 @@ export default function NewsCard({ id, title, excerpt, date, category, isFem, is
       }}
     >
       <ImageArea className="img-area">
-        <FaFutbol />
+        {cover ? (
+          <img src={cover} alt={title} />
+        ) : (
+          <FaFutbol />
+        )}
         <DateBadge>{date}</DateBadge>
       </ImageArea>
 

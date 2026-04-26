@@ -103,6 +103,7 @@ const HeroImage = styled.div`
         transparent 1px,
         transparent 40px
       );
+    z-index: 1;
   }
 
   &::after {
@@ -110,6 +111,16 @@ const HeroImage = styled.div`
     position: absolute;
     inset: 0;
     background: linear-gradient(180deg, transparent 60%, rgba(0,0,0,0.6) 100%);
+    z-index: 2;
+  }
+
+  img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
   }
 
   svg {
@@ -341,7 +352,11 @@ export default function NewsSection() {
           >
             <HeroImage className="hero-img">
               <HeroBadge>Destacada</HeroBadge>
-              <FaFutbol />
+              {featured.cover ? (
+                <img src={featured.cover} alt={featured.title} />
+              ) : (
+                <FaFutbol />
+              )}
             </HeroImage>
             <HeroContent>
               <HeroCategory>{featured.category}</HeroCategory>
@@ -372,6 +387,7 @@ export default function NewsSection() {
             excerpt={news.excerpt}
             date={news.date}
             category={news.category}
+            cover={news.cover}
             isFem={false}
           />
         ))}

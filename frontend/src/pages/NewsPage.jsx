@@ -26,12 +26,23 @@ const HeroImage = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+
+  img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+  }
 
   &::after {
     content: '';
     position: absolute;
     inset: 0;
     background: linear-gradient(0deg, var(--card-bg) 0%, transparent 100%);
+    z-index: 1;
   }
 `;
 
@@ -47,12 +58,13 @@ const BackButton = styled.button`
   font-family: var(--font-display);
   font-size: 1.2rem;
   letter-spacing: 2px;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.5);
   padding: 8px 20px;
   border-radius: 30px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(6px);
   transition: all 0.3s ease;
+  cursor: pointer;
 
   &:hover {
     background: ${(props) => props.$isFem ? 'var(--fem-accent)' : 'var(--blue)'};
@@ -241,6 +253,9 @@ export default function NewsPage() {
       exit="exit"
     >
       <HeroImage $isFem={isFemItem}>
+        {article.cover && (
+          <img src={article.cover} alt={article.title} />
+        )}
         <BackButton onClick={() => navigate(-1)} $isFem={isFemItem}>
           <FaArrowLeft /> Volver
         </BackButton>

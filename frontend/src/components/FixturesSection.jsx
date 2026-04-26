@@ -90,13 +90,15 @@ export default function FixturesSection() {
 
   useEffect(() => {
     let cancelled = false;
-    // Últimos 3 partidos finalizados de fútbol
-    getPartidos({ categoria: 'futbol', estado: 'finalizado', limit: 3 })
+    // Últimos 3 partidos finalizados (sin filtro de categoría)
+    getPartidos({ estado: 'finalizado', limit: 20 })
       .then((data) => {
         if (cancelled) return;
         if (data === null) return; // Strapi caído -> mantener estáticos
+        // Los partidos vienen sorted por fecha:asc, los invertimos para obtener los más recientes
         const recent = [...data].reverse().slice(0, 3);
-        setFixtures(recent.map(partidoToFixture).filter(Boolean));
+        const fixtures = recent.map(partidoToFixture).filter(Boolean);
+        if (fixtures.length > 0) setFixtures(fixtures);
       })
       .catch(() => {});
     return () => { cancelled = true; };
