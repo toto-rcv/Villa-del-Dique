@@ -1,0 +1,52 @@
+{
+  "kind": "collectionType",
+  "collectionName": "directivos",
+  "info": {
+    "singularName": "directivo",
+    "pluralName": "directivos",
+    "displayName": "Directivo",
+    "description": "Miembros de la comisión directiva del club"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "nombre": {
+      "type": "string",
+      "required": true,
+      "maxLength": 100
+    },
+    "apellido": {
+      "type": "string",
+      "required": true,
+      "maxLength": 100
+    },
+    "cargo": {
+      "type": "string",
+      "required": true,
+      "maxLength": 100
+    },
+    "foto": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "orden": {
+      "type": "integer",
+      "default": 0
+    },
+    "activo": {
+      "type": "boolean",
+      "default": true
+    },
+    "bio": {
+      "type": "text",
+      "maxLength": 500
+    },
+    "email": {
+      "type": "email"
+    }
+  }
+}

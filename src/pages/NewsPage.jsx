@@ -1,11 +1,11 @@
 // === FILENAME: src/pages/NewsPage.jsx ===
+import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { FaArrowLeft } from 'react-icons/fa';
-import { newsData } from '../data/newsData';
-import { newsDataFem } from '../data/newsDataFem';
 import NewsCard from '../components/NewsCard';
+import { getNewsById, getNews, formatDateAR } from '../services/api';
 
 // ── Styled Components ──────────────────────────────────────────────────────────
 
@@ -169,15 +169,61 @@ export default function NewsPage() {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  // Determine if it's a feminine team news item
-  const isFemItem = String(id).startsWith('fem-');
-  
-  // Find the exact news item
-  const allNews = isFemItem ? newsDataFem : newsData;
-  const article = allNews.find(item => String(item.id) === String(id));
+  const [article, setArticle] = useState(null);
+  const [relatedNews, setRelatedNews] = useState([]);
+  const [loaded, setLoaded] = useState(false);
 
-  // Get related news (excluding current)
-  const relatedNews = allNews.filter(item => String(item.id) !== String(id)).slice(0, 3);
+  useEffect(() => {
+    let cancelled = false;
+    setLoaded(false);
+    setArticle(null);
+    setRelatedNews([]);
+
+    getNewsById(id)
+      .then((n) => {
+        if (cancelled || !n) return;
+        setArticle({
+          id: n.id,
+          title: n.title,
+          excerpt: n.excerpt,
+          body: n.body,
+          date: formatDateAR(n.date),
+          category: n.category,
+          variant: n.variant,
+          cover: n.cover,
+        });
+        // Relacionadas: últimas noticias de la misma variante
+        return getNews({ variant: n.variant || 'main', limit: 4 }).then((list) => {
+          if (cancelled) return;
+          setRelatedNews(
+            (list || [])
+              .filter((it) => String(it.id) !== String(n.id))
+              .slice(0, 3)
+              .map((it) => ({
+                id: it.id,
+                title: it.title,
+                excerpt: it.excerpt,
+                date: formatDateAR(it.date),
+                category: it.category,
+                _variant: it.variant === 'bochas' ? 'bocha' : 'main',
+              }))
+          );
+        });
+      })
+      .catch(() => {})
+      .finally(() => {
+        if (!cancelled) setLoaded(true);
+      });
+
+    return () => { cancelled = true; };
+  }, [id]);
+
+  const isFemItem = article ? article.variant === 'bochas' : false;
+
+  // Mientras carga la primera respuesta, no decidir "no encontrada"
+  if (!article && !loaded) {
+    return <PageContainer />;
+  }
 
   if (!article) {
     return (

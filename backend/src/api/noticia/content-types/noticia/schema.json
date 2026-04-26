@@ -1,0 +1,73 @@
+{
+  "kind": "collectionType",
+  "collectionName": "noticias",
+  "info": {
+    "singularName": "noticia",
+    "pluralName": "noticias",
+    "displayName": "Noticia",
+    "description": "Noticias y novedades del club"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "titulo": {
+      "type": "string",
+      "required": true,
+      "maxLength": 200
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "titulo",
+      "required": true
+    },
+    "categoria": {
+      "type": "enumeration",
+      "enum": [
+        "Primera",
+        "Reserva",
+        "Inferiores",
+        "Femenino",
+        "Bochas",
+        "Institucional",
+        "Biblioteca",
+        "Comunidad"
+      ],
+      "default": "Institucional",
+      "required": true
+    },
+    "fecha": {
+      "type": "date",
+      "required": true
+    },
+    "bajada": {
+      "type": "text",
+      "required": true,
+      "maxLength": 400
+    },
+    "contenido": {
+      "type": "richtext"
+    },
+    "portada": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "variante": {
+      "type": "enumeration",
+      "enum": ["masculino", "femenino", "general"],
+      "default": "general",
+      "required": true
+    },
+    "destacada": {
+      "type": "boolean",
+      "default": false
+    },
+    "autor": {
+      "type": "string",
+      "maxLength": 120
+    }
+  }
+}

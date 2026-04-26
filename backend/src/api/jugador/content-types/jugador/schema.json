@@ -1,0 +1,104 @@
+{
+  "kind": "collectionType",
+  "collectionName": "jugadores",
+  "info": {
+    "singularName": "jugador",
+    "pluralName": "jugadores",
+    "displayName": "Jugador",
+    "description": "Jugadores de futbol y bochas"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "nombre": {
+      "type": "string",
+      "required": true,
+      "maxLength": 100
+    },
+    "apellido": {
+      "type": "string",
+      "required": true,
+      "maxLength": 100
+    },
+    "numero": {
+      "type": "integer",
+      "min": 1,
+      "max": 99
+    },
+    "posicion": {
+      "type": "string",
+      "maxLength": 80
+    },
+    "edad": {
+      "type": "integer",
+      "min": 14,
+      "max": 99
+    },
+    "nacionalidad": {
+      "type": "string",
+      "default": "Argentina",
+      "maxLength": 80
+    },
+    "altura": {
+      "type": "string",
+      "maxLength": 20
+    },
+    "desde": {
+      "type": "string",
+      "maxLength": 20
+    },
+    "bio": {
+      "type": "text"
+    },
+    "foto": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    },
+    "tipo": {
+      "type": "enumeration",
+      "enum": ["futbol", "bochas"],
+      "required": true,
+      "default": "futbol"
+    },
+    "categoria": {
+      "type": "enumeration",
+      "enum": ["primera", "reserva", "inferiores", "femenino", "bochas"],
+      "default": "primera",
+      "required": true
+    },
+    "estado": {
+      "type": "enumeration",
+      "enum": ["titular", "suplente", "plantel"],
+      "default": "plantel",
+      "required": true
+    },
+    "formacion_x": {
+      "type": "decimal",
+      "min": 0,
+      "max": 100
+    },
+    "formacion_y": {
+      "type": "decimal",
+      "min": 0,
+      "max": 100
+    },
+    "orden": {
+      "type": "integer",
+      "default": 0
+    },
+    "capitan": {
+      "type": "boolean",
+      "default": false
+    },
+    "stats": {
+      "type": "json"
+    },
+    "activo": {
+      "type": "boolean",
+      "default": true
+    }
+  }
+}

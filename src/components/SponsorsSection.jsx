@@ -1,7 +1,9 @@
 // === FILENAME: src/components/SponsorsSection.jsx ===
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { sponsorsData } from '../data/sponsorsData';
+import { getSponsors } from '../services/api';
 import { FaBuilding } from 'react-icons/fa';
 
 // ── Styled Components ──────────────────────────────────────────────────────────
@@ -111,6 +113,21 @@ const LogoPlaceholder = styled.div`
   }
 `;
 
+const LogoImage = styled.img`
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 16px;
+  z-index: 1;
+  transition: transform 0.3s ease;
+  background: rgba(255, 255, 255, 0.05);
+
+  ${SponsorCard}:hover & {
+    transform: scale(1.1);
+  }
+`;
+
 const SponsorName = styled.span`
   font-family: var(--font-body);
   font-size: 1rem;
@@ -143,6 +160,29 @@ const cardVariants = {
 // ── Component ──────────────────────────────────────────────────────────────────
 
 export default function SponsorsSection() {
+  const [sponsors, setSponsors] = useState([]);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    getSponsors()
+      .then((data) => {
+        if (cancelled) return;
+        // data === null => Strapi caído -> usar estáticos
+        // data === [] o array con items => Strapi es la fuente de verdad
+        if (data === null) {
+          setSponsors(sponsorsData);
+        } else {
+          setSponsors(data);
+        }
+      })
+      .catch(() => {
+        if (!cancelled) setSponsors(sponsorsData);
+      });
+
+    return () => { cancelled = true; };
+  }, []);
+
   return (
     <Section>
       <Header>
@@ -170,17 +210,23 @@ export default function SponsorsSection() {
         whileInView="visible"
         viewport={{ once: true, margin: "-50px" }}
       >
-        {sponsorsData.map((sponsor) => (
+        {sponsors.map((sponsor) => (
           <SponsorCard
             key={sponsor.id}
             href={sponsor.url}
+            target="_blank"
+            rel="noopener noreferrer"
             variants={cardVariants}
             whileHover={{ y: -6 }}
             whileTap={{ scale: 0.98 }}
           >
-            <LogoPlaceholder>
-              <FaBuilding className="icon-placeholder" />
-            </LogoPlaceholder>
+            {sponsor.logo ? (
+              <LogoImage src={sponsor.logo} alt={sponsor.name} />
+            ) : (
+              <LogoPlaceholder>
+                <FaBuilding className="icon-placeholder" />
+              </LogoPlaceholder>
+            )}
             <SponsorName className="sponsor-name">{sponsor.name}</SponsorName>
           </SponsorCard>
         ))}

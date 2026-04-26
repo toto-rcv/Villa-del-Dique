@@ -190,7 +190,7 @@ const mobileItemVariants = {
 
 const links = [
   { to: '/', label: 'Home' },
-  { to: '/noticias/1', label: 'Noticias' },
+  { to: '/noticias', label: 'Noticias' },
   { to: '/calendario', label: 'Calendario' },
   { to: '/equipos', label: 'Equipos' },
   { to: '/quienes-somos', label: 'Quiénes Somos' },

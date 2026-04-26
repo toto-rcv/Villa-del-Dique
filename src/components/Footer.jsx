@@ -3,8 +3,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { FaFacebook, FaInstagram, FaXTwitter, FaYoutube } from 'react-icons/fa6';
-
-// ── Styled Components ──────────────────────────────────────────────────────────
+import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaClock } from 'react-icons/fa';
 
 const FooterWrapper = styled.footer`
   background: linear-gradient(180deg, #000000, #040D1A);
@@ -108,6 +107,73 @@ const SocialIcon = styled.a`
   }
 `;
 
+const ContactGrid = styled(motion.div)`
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  width: 100%;
+  max-width: 1100px;
+  margin: 20px auto 40px;
+  padding: 30px 20px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(59, 163, 239, 0.15);
+
+  @media (max-width: 860px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 520px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+const ContactItem = styled.div`
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+
+  .icon-wrap {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(59, 163, 239, 0.12);
+    border: 1px solid rgba(59, 163, 239, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--blue);
+    font-size: 1rem;
+  }
+
+  h4 {
+    font-family: var(--font-display);
+    font-size: 0.75rem;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--blue);
+    font-weight: 700;
+  }
+
+  p {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1.5;
+    margin: 0;
+
+    a {
+      color: inherit;
+      transition: color 0.25s ease;
+
+      &:hover {
+        color: var(--blue);
+      }
+    }
+  }
+`;
+
 const CopyrightLine = styled.div`
   font-size: 0.85rem;
   color: rgba(255, 255, 255, 0.4);
@@ -147,8 +213,6 @@ const DeveloperCredit = styled.div`
   }
 `;
 
-// ── Animation Variants ─────────────────────────────────────────────────────────
-
 const staggerContainer = {
   hidden: { opacity: 0 },
   visible: {
@@ -161,8 +225,6 @@ const fadeUp = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
 };
-
-// ── Component ──────────────────────────────────────────────────────────────────
 
 export default function Footer() {
   return (
@@ -185,10 +247,10 @@ export default function Footer() {
 
         <NavLinks variants={fadeUp}>
           <li><NavLinkStyled to="/">Home</NavLinkStyled></li>
-          <li><NavLinkStyled to="/noticias/1">Noticias</NavLinkStyled></li>
+          <li><NavLinkStyled to="/noticias">Noticias</NavLinkStyled></li>
           <li><NavLinkStyled to="/calendario">Calendario</NavLinkStyled></li>
           <li><NavLinkStyled to="/equipos">Equipos</NavLinkStyled></li>
-          <li><NavLinkStyled to="/quienes-somos">Quiénes Somos</NavLinkStyled></li>
+          <li><NavLinkStyled to="/quienes-somos">Quienes Somos</NavLinkStyled></li>
         </NavLinks>
 
         <SocialRow variants={fadeUp}>
@@ -206,14 +268,37 @@ export default function Footer() {
           </motion.div>
         </SocialRow>
 
+        <ContactGrid variants={fadeUp}>
+          <ContactItem>
+            <div className="icon-wrap"><FaMapMarkerAlt /></div>
+            <h4>Ubicacion</h4>
+            <p>Av. San Martin s/n<br />Villa del Dique, Cordoba</p>
+          </ContactItem>
+          <ContactItem>
+            <div className="icon-wrap"><FaPhoneAlt /></div>
+            <h4>Telefono</h4>
+            <p><a href="tel:+543546xxxxxx">+54 3546 XX-XXXX</a></p>
+          </ContactItem>
+          <ContactItem>
+            <div className="icon-wrap"><FaEnvelope /></div>
+            <h4>Email</h4>
+            <p><a href="mailto:contacto@cvdd.com.ar">contacto@cvdd.com.ar</a></p>
+          </ContactItem>
+          <ContactItem>
+            <div className="icon-wrap"><FaClock /></div>
+            <h4>Horarios</h4>
+            <p>Lun a Vie - 16 a 22 hs<br />Sab y Dom - 10 a 20 hs</p>
+          </ContactItem>
+        </ContactGrid>
+
         <HR variants={fadeUp} style={{ width: '100%', maxWidth: '1200px', opacity: 0.1, margin: '0 0 30px' }} />
 
         <motion.div variants={fadeUp} style={{ width: '100%' }}>
           <CopyrightLine>
-            © {new Date().getFullYear()} Club Deportivo Villa del Dique — Todos los derechos reservados
+            {`\u00A9 `}{new Date().getFullYear()}{' Club Deportivo Villa del Dique - Todos los derechos reservados'}
           </CopyrightLine>
           <DeveloperCredit>
-            Desarrollado con ❤️ por <a href="https://surcodes.com" target="_blank" rel="noreferrer">surcodes.com</a>
+            Desarrollado por <a href="https://surcodes.com" target="_blank" rel="noreferrer">surcodes.com</a>
           </DeveloperCredit>
         </motion.div>
       </motion.div>

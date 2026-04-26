@@ -1,0 +1,71 @@
+{
+  "kind": "collectionType",
+  "collectionName": "partidos",
+  "info": {
+    "singularName": "partido",
+    "pluralName": "partidos",
+    "displayName": "Partido",
+    "description": "Fixture/partidos del club"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "rival": {
+      "type": "string",
+      "required": true,
+      "maxLength": 160
+    },
+    "fecha": {
+      "type": "datetime",
+      "required": true
+    },
+    "local": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    },
+    "estadio": {
+      "type": "string",
+      "maxLength": 160
+    },
+    "torneo": {
+      "type": "string",
+      "maxLength": 160
+    },
+    "categoria": {
+      "type": "enumeration",
+      "enum": [
+        "Primera Masculino",
+        "Primera Femenino",
+        "Reserva",
+        "Inferiores",
+        "Bochas"
+      ],
+      "required": true,
+      "default": "Primera Masculino"
+    },
+    "estado": {
+      "type": "enumeration",
+      "enum": ["programado", "en_curso", "finalizado", "suspendido", "postergado"],
+      "default": "programado",
+      "required": true
+    },
+    "goles_local": {
+      "type": "integer",
+      "min": 0
+    },
+    "goles_visitante": {
+      "type": "integer",
+      "min": 0
+    },
+    "observaciones": {
+      "type": "text"
+    },
+    "destacado": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

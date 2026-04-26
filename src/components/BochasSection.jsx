@@ -1,10 +1,10 @@
 // === FILENAME: src/components/FeminineSection.jsx ===
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import NewsCard from './NewsCard';
 import FixtureCard from './FixtureCard';
-import { newsDataFem } from '../data/newsDataFem';
-import { fixturesDataFem } from '../data/fixturesDataFem';
+import { getNews, getPartidos, partidoToFixture, formatDateAR } from '../services/api';
 
 // ── Styled Components ──────────────────────────────────────────────────────────
 
@@ -101,6 +101,38 @@ const gridVariants = {
 // ── Component ──────────────────────────────────────────────────────────────────
 
 export default function BochasSection() {
+  const [news, setNews] = useState([]);
+  const [fixtures, setFixtures] = useState([]);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    getNews({ categoria: 'Bochas', limit: 3 })
+      .then((data) => {
+        if (cancelled || data === null) return;
+        setNews(
+          data.map((n) => ({
+            id: n.documentId || n.id,
+            title: n.title,
+            excerpt: n.excerpt,
+            date: formatDateAR(n.date),
+            category: n.category,
+          }))
+        );
+      })
+      .catch(() => {});
+
+    getPartidos({ categoria: 'bochas', estado: 'finalizado', limit: 3 })
+      .then((data) => {
+        if (cancelled || data === null) return;
+        const recent = [...data].reverse().slice(0, 3);
+        setFixtures(recent.map(partidoToFixture).filter(Boolean));
+      })
+      .catch(() => {});
+
+    return () => { cancelled = true; };
+  }, []);
+
   return (
     <Section>
       <Header>
@@ -110,7 +142,7 @@ export default function BochasSection() {
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
         >
-          PRIMERA DIVISION BOCHA
+          EQUIPO DE BOCHA
         </Title>
         <Subtitle
           variants={headerVariants}
@@ -128,14 +160,14 @@ export default function BochasSection() {
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
       >
-        {newsDataFem.slice(0, 3).map((news) => (
+        {news.slice(0, 3).map((item) => (
           <NewsCard
-            key={news.id}
-            id={news.id}
-            title={news.title}
-            excerpt={news.excerpt}
-            date={news.date}
-            category={news.category}
+            key={item.id}
+            id={item.id}
+            title={item.title}
+            excerpt={item.excerpt}
+            date={item.date}
+            category={item.category}
             isBocha={true}
           />
         ))}
@@ -161,7 +193,7 @@ export default function BochasSection() {
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
       >
-        {fixturesDataFem.map((fixture) => (
+        {fixtures.map((fixture) => (
           <FixtureCard key={fixture.id} data={fixture} isBocha={true} />
         ))}
       </GridFixtures>

@@ -1,0 +1,38 @@
+{
+  "name": "cvdd-backend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Strapi v5 backend for Club Deportivo y Biblioteca Villa del Dique",
+  "license": "MIT",
+  "scripts": {
+    "build": "strapi build",
+    "console": "strapi console",
+    "deploy": "strapi deploy",
+    "develop": "strapi develop",
+    "seed": "node scripts/seed.js",
+    "start": "strapi start",
+    "strapi": "strapi",
+    "upgrade": "npx @strapi/upgrade latest",
+    "upgrade:dry": "npx @strapi/upgrade latest --dry"
+  },
+  "dependencies": {
+    "@strapi/plugin-cloud": "^5.11.0",
+    "@strapi/plugin-users-permissions": "^5.11.0",
+    "@strapi/strapi": "^5.11.0",
+    "mysql2": "^3.11.5",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.0.0",
+    "styled-components": "^6.0.0"
+  },
+  "devDependencies": {
+    "dotenv": "^16.4.5"
+  },
+  "engines": {
+    "node": ">=18.0.0 <=22.x.x",
+    "npm": ">=6.0.0"
+  },
+  "strapi": {
+    "uuid": "cvdd-club-villa-del-dique"
+  }
+}

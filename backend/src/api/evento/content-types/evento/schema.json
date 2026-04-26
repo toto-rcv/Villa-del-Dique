@@ -1,0 +1,61 @@
+{
+  "kind": "collectionType",
+  "collectionName": "eventos",
+  "info": {
+    "singularName": "evento",
+    "pluralName": "eventos",
+    "displayName": "Evento",
+    "description": "Eventos no deportivos: biblioteca, talleres, jornadas solidarias"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "titulo": {
+      "type": "string",
+      "required": true,
+      "maxLength": 200
+    },
+    "descripcion": {
+      "type": "text",
+      "required": true
+    },
+    "fecha": {
+      "type": "datetime",
+      "required": true
+    },
+    "fecha_fin": {
+      "type": "datetime"
+    },
+    "ubicacion": {
+      "type": "string",
+      "maxLength": 200
+    },
+    "categoria": {
+      "type": "enumeration",
+      "enum": [
+        "biblioteca",
+        "cultural",
+        "solidario",
+        "institucional",
+        "deportivo",
+        "comunitario"
+      ],
+      "default": "institucional",
+      "required": true
+    },
+    "cartel": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": ["images"]
+    },
+    "destacado": {
+      "type": "boolean",
+      "default": false
+    },
+    "link_inscripcion": {
+      "type": "string"
+    }
+  }
+}

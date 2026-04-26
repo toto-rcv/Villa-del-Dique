@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import Hero from '../components/Hero';
 import NewsSection from '../components/NewsSection';
 import FixturesSection from '../components/FixturesSection';
+import EventsSection from '../components/EventsSection';
 import BochasSection from '../components/BochasSection';
 import SponsorsSection from '../components/SponsorsSection';
 
@@ -36,6 +37,7 @@ export default function Home() {
       <Hero />
       <NewsSection />
       <FixturesSection />
+      <EventsSection />
       <BochasSection />
       <SponsorsSection />
     </PageContainer>

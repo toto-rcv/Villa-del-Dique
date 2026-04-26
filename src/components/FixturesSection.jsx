@@ -1,8 +1,10 @@
 // === FILENAME: src/components/FixturesSection.jsx ===
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import FixtureCard from './FixtureCard';
 import { fixturesData } from '../data/fixturesData';
+import { getPartidos, partidoToFixture } from '../services/api';
 
 // ── Styled Components ──────────────────────────────────────────────────────────
 
@@ -84,6 +86,22 @@ const gridVariants = {
 // ── Component ──────────────────────────────────────────────────────────────────
 
 export default function FixturesSection() {
+  const [fixtures, setFixtures] = useState(fixturesData);
+
+  useEffect(() => {
+    let cancelled = false;
+    // Últimos 3 partidos finalizados de fútbol
+    getPartidos({ categoria: 'futbol', estado: 'finalizado', limit: 3 })
+      .then((data) => {
+        if (cancelled) return;
+        if (data === null) return; // Strapi caído -> mantener estáticos
+        const recent = [...data].reverse().slice(0, 3);
+        setFixtures(recent.map(partidoToFixture).filter(Boolean));
+      })
+      .catch(() => {});
+    return () => { cancelled = true; };
+  }, []);
+
   return (
     <Section>
       <Header>
@@ -103,7 +121,7 @@ export default function FixturesSection() {
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
       >
-        {fixturesData.map((fixture) => (
+        {fixtures.map((fixture) => (
           <FixtureCard key={fixture.id} data={fixture} isFem={false} />
         ))}
       </Grid>
