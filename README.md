@@ -1,6 +1,6 @@
 # Club Deportivo y Biblioteca Villa del Dique
 
-Sitio web institucional del Club Deportivo y Biblioteca Villa del Dique. El proyecto está dividido en dos partes independientes: **frontend** (React + Vite) y **backend** (Strapi v5 + MySQL).
+Sitio web institucional del Club Deportivo y Biblioteca Villa del Dique. El proyecto está dividido en dos partes independientes: **frontend** (React + Create React App) y **backend** (Strapi v5 + MySQL).
 
 ## Estructura del repo
 
@@ -26,21 +26,23 @@ Va a estar disponible en `http://localhost:1337`. Antes de la primera vez, confi
 
 Apenas arranca por primera vez te pide crear el usuario admin del panel. Después podés cargar contenido en `http://localhost:1337/admin`.
 
-### 2. Frontend (React + Vite)
+### 2. Frontend (React + CRA)
 
 En otra terminal:
 
 ```bash
 cd frontend
 npm install
-npm run dev
+npm start
 ```
 
-Va a estar disponible en `http://localhost:5173`. Lee la URL del backend desde `frontend/.env.local` (`VITE_STRAPI_URL=http://localhost:1337` por defecto).
+Va a estar disponible en `http://localhost:3000`. Lee la URL del backend desde `frontend/.env.local` (`REACT_APP_STRAPI_URL=http://localhost:1337` por defecto).
+
+Para generar el build de producción: `npm run build`. Eso crea `frontend/build/` con los archivos estáticos listos para deployar.
 
 ## Stack
 
-**Frontend**: React 19, Vite, React Router, Styled Components, Framer Motion, React Icons.
+**Frontend**: React 19, Create React App (`react-scripts`), React Router, Styled Components, Framer Motion, React Icons.
 
 **Backend**: Strapi v5, MySQL 8+. Los content-types definidos son: Noticia, Partido, Evento, Jugador, Sponsor, Directivo.
 
@@ -48,4 +50,4 @@ Va a estar disponible en `http://localhost:5173`. Lee la URL del backend desde `
 
 El frontend consume el API REST público de Strapi (`/api/...`) sin autenticación, ya que los permisos `find`/`findOne` para los content-types públicos se otorgan automáticamente al rol Public en el bootstrap del backend (`backend/src/index.js`).
 
-Si en el futuro se quiere proteger algún endpoint, agregar un API Token en Strapi y guardarlo en `frontend/.env.local` como `VITE_STRAPI_TOKEN=...`.
+Si en el futuro se quiere proteger algún endpoint, agregar un API Token en Strapi y guardarlo en `frontend/.env.local` como `REACT_APP_STRAPI_TOKEN=...`.

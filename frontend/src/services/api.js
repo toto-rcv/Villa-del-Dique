@@ -5,9 +5,9 @@
 // fallan, cada función devuelve un array/objeto vacío para que la UI no se rompa.
 
 const API_URL =
-  import.meta.env.VITE_STRAPI_URL || 'http://localhost:1337';
+  process.env.REACT_APP_STRAPI_URL || 'http://localhost:1337';
 
-const API_TOKEN = import.meta.env.VITE_STRAPI_TOKEN || null;
+const API_TOKEN = process.env.REACT_APP_STRAPI_TOKEN || null;
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 

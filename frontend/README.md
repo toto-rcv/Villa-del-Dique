@@ -1,16 +1,44 @@
-# React + Vite
+# Frontend — Club Villa del Dique
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+SPA en React 19 generada con [Create React App](https://create-react-app.dev/) (`react-scripts`).
 
-Currently, two official plugins are available:
+## Cómo correr
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+```bash
+npm install
+npm start
+```
 
-## React Compiler
+Abre `http://localhost:3000`.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Build de producción
 
-## Expanding the ESLint configuration
+```bash
+npm run build
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Genera la carpeta `build/` con archivos estáticos minificados listos para subir a cualquier hosting (Netlify, Vercel, Hostinger, S3, etc.).
+
+## Variables de entorno
+
+Configurables en `.env.local` (no se sube al repo):
+
+- `REACT_APP_STRAPI_URL` — URL del backend Strapi. Por defecto `http://localhost:1337`.
+- `REACT_APP_STRAPI_TOKEN` — opcional. Token Read-only de Strapi si protegés las rutas.
+
+> Importante: en CRA las variables de entorno **deben empezar con `REACT_APP_`** para ser expuestas al cliente.
+
+## Estructura
+
+```
+src/
+├── components/    # Componentes reutilizables (NewsCard, FootballField, etc.)
+├── pages/         # Páginas con su routing (Home, NoticiasPage, CalendarPage, etc.)
+├── data/          # Datos estáticos de fallback (legacy, ya no se usan)
+├── services/      # Cliente HTTP de Strapi (api.js)
+├── styles/        # Estilos globales
+├── assets/        # Imágenes y otros assets importados desde código
+├── App.jsx        # Componente raíz + router
+├── index.js       # Entry point (montaje del root de React)
+└── index.css      # Reset y estilos base
+```
